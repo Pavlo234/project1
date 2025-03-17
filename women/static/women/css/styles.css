@@ -1,0 +1,240 @@
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background: linear-gradient(to right, #f2f2f2, #e0e0e0);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    background-attachment: fixed;
+}
+/* Стили для навигационной панели */
+ul.paul {
+    list-style-type: none;
+    background-color: #ddd;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: transform 0.3s ease;
+}
+
+
+
+
+
+/* Плавное увеличение панели */
+ul:hover.paul {
+    transform: translateY(-5px);
+}
+
+
+/* Стили для списка */
+li {
+    margin: 0 20px;
+}
+
+/* Стили для ссылок */
+a {
+    text-decoration: none;
+    color: #4A4A4A;
+    font-size: 16px;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    position: relative;
+}
+
+/* Ховер эффект */
+a:hover {
+    background-color: #ff6347;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Стили для активной ссылки */
+a:active {
+    background-color: #ff4500;
+    color: #fff;
+}
+
+/* Анимация на активную ссылку */
+a:active::after {
+    content: ' 🌟';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 20px;
+    color: gold;
+}
+
+/* Мобильный дизайн */
+@media (max-width: 768px) {
+    ul {
+        flex-direction: column;
+    }
+    
+    li {
+        margin-bottom: 15px;
+    }
+    
+    li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+
+/* Стили для карточки */
+.card {
+    background-color: #ddd;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+
+    /* Позиционирование в правом нижнем углу */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Анимация для карточки */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для заголовка внутри карточки */
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Стиль для текста внутри карточки */
+.card p {
+    font-size: 1em;
+    color: #666;
+}
+
+
+
+
+/* Увеличиваем отступ снизу у h5 */
+h5 {
+    margin-bottom: 20px; /* Например, 20px, чтобы увеличить отступ снизу */
+}
+
+/* Или увеличиваем отступ сверху у ссылки */
+a {
+    margin-top: 20px; /* Например, 20px, чтобы увеличить отступ сверху */
+}
+
+
+/* Увеличиваем отступ справа у h5 */
+h5 {
+    margin-right: 20px; /* Например, 20px, можете настроить по вашему желанию */
+}
+
+/* Или увеличиваем отступ слева у ссылки */
+a {
+    margin-left: 20px; /* Например, 20px, можете настроить по вашему желанию */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Убедитесь, что ul.custom-list не перезаписывается глобальными стилями */
+ul.custom-list {
+    list-style-type: none; /* Убирает маркеры списка */
+    padding: 0; /* Убирает отступы */
+    margin: 0; /* Убирает внешние отступы */
+}
+
+ul.custom-list li {
+    display: block; /* Каждый элемент списка будет в своей строке */
+    margin-bottom: 20px; /* Отступ между элементами списка */
+    
+    /* Добавляем рамку и закругленные углы */
+    border: 2px solid #ddd; /* Светлая рамка */
+    border-radius: 10px; /* Закругленные углы */
+    padding: 15px; /* Внутренние отступы */
+    
+    /* Добавляем тень для глубины */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    
+    /* Плавное изменение при наведении */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Эффект при наведении на элемент списка */
+ul.custom-list li:hover {
+    transform: translateY(-5px); /* Легкое поднимание элемента */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Увеличенная тень при наведении */
+}
+
+/* Для h2, h5, p, если нужно настраивать отступы */
+h2, h5, p {
+    margin: 0 0 10px; /* Отступы для заголовков и абзацев */
+}
+
+/* Стили для ссылок */
+a {
+    text-decoration: none; /* Убирает подчеркивание у ссылок */
+    color: #4A4A4A; /* Цвет ссылки */
+    font-weight: 500; /* Чуть более жирный шрифт для ссылок */
+}
+
+
+
+

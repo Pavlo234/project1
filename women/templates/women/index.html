@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load women_tags %}
+{% block content %}
+
+<ul class="custom-list"> <!-- Добавляем класс 'custom-list' -->
+    {% for po in posts %} 
+    {% if po.is_publisher %}
+    <li>
+        <h2>{{ po.title }}</h2>
+        <h5>{{ po.content }}</h5>
+        <p><a href="{{ po.get_absolute_url }}">Читать пост</a></p>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+<!-- {% include 'women/includes/nav.html' %} -->
+
+<div class="card">
+    <h2>Девушки</h2>
+    <h3 class="mer">{% include 'women/includes/nav.html' %}</h3>
+    <p>Известные актрисы</p>
+</div>
+
+{% show_categories cat_selected %}
+
+{% endblock %}

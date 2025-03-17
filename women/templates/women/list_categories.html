@@ -1,0 +1,10 @@
+
+{% for cat in cats %}
+{% if cat_id == cat_select %}
+<li class="selected" >{{ cat.name }}</li>
+{% else %}
+<li class="i"> <a href="{% url 'category' cat.id %}" class="mr">{{cat.name}}</a> </li>
+{% endif %}
+{% endfor %}
+
+
