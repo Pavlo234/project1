@@ -57,6 +57,12 @@ def show_category(request, cat_id):
 
 
 
+
+
+
+
+
+
 def show_post(request, post_slug):
     post = get_object_or_404(Women, slug=post_slug)
     data =  {
