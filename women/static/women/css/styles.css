@@ -238,3 +238,10 @@ a {
 
 
 
+
+
+
+a {
+    pointer-events: auto;
+  }
+  

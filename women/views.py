@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.template.loader import render_to_string
 from women.models import Women
+from .models import Women, Category
 
 
 menu = [
@@ -17,12 +18,6 @@ data_db = [
     {'id' : 3, 'title' : 'roma', 'content' : 'майнкрафт' ,'is_published' : True,},
 ]
 
-cats_db = [
-    {'id' : 1, 'name' : 'Актрисы'},
-    {'id' : 2, 'name' : 'Певицы'},
-    {'id' : 3, 'name' : 'Спорсменки'},
-
-]
 
 def index(request):
     posts = Women.publisher.all()
@@ -46,12 +41,14 @@ def contact(request):
 def login(request):
     return HttpResponse('Зарегистрироваться')
 
-def show_category(request, cat_id):
+def show_category(request, cat_slug):
+    category = get_object_or_404(Category, slug = cat_slug)
+    posts = Women.publisher.filter(cat_id = category.pk)
     data =  {
-        'title' : 'Отображение статьи',
+        'title' : f'Отображение статьи {category.name}',
         'menu' : menu,
-        'posts' : data_db,
-        'cat_selected' : cat_id,
+        'posts' : posts,
+        'cat_selected' : category.pk,
         }
     return render(request, 'women/index.html', context=data)
 
