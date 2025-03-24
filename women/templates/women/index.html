@@ -1,3 +1,5 @@
+
+
 {% extends 'base.html' %}
 {% load women_tags %}
 
@@ -12,21 +14,27 @@
         {% endautoescape %}
         <p><a href="{{ po.get_absolute_url }}">Читать пост</a></p>
     </li>
-
     {% endfor %}
 </ul>
 
 <!-- {% include 'women/includes/nav.html' %} -->
 
+
 <div class="card">
     <h2>Девушки</h2>
-    <li class="selected">
-        <a href="{% url 'home' %}" class="mr">Все категории</a>
-      </li>
-    <h3 class="mer">{% show_categories cat_selected %}</h3>
+    <li>
+        <a href="{% url 'home' %}" >Все категории</a>
+    </li>
+    <h3 >{% show_categories cat_selected %}</h3>
     <p>Известные актрисы</p>
 </div>
 
 
+
+<div class="cardtwo">
+    <h2>Теги</h2>
+
+    <li class="selected" >{% show_all_tags %}</li>
+</div>
 
 {% endblock %}

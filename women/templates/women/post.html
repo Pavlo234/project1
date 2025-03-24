@@ -1,6 +1,27 @@
-{% extends 'base.html' %}
-{% block content %}
 
+{% extends 'base.html' %}
+
+{% block breadcrumbs %}
+{% with post.tags.all as tags %}
+{% if tags %}
+
+<ul class="card">
+{% for t in tags %}
+
+
+<li ><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a></li>
+
+{% endfor %}
+</ul>
+{% endif %}
+
+{% endwith %}
+{% endblock %}
+
+
+
+
+{% block content %}
 <h1>{{ post.title }}</h1>
 {% if post.photo %}
 <p><img class="img-article-left" src="{{ post.photo.url }}" alt=""></p>
@@ -8,5 +29,6 @@
 
 {{ post.content|linebreaks }}
 <h1>141</h1>
+
 
 {% endblock %}

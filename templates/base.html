@@ -1,3 +1,4 @@
+
 {% load static %}
 {% load women_tags %}
 
@@ -7,9 +8,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }}</title>
-    <!-- <link type="text/css" href="{% static 'women/css/styles.css' %}?v={{ now|date:'YmdHis' }}" rel="stylesheet"> -->
+    <link type="text/css" href="{% static 'women/css/styles.css' %}?v={{ now|date:'YmdHis' }}" rel="stylesheet">
 
-    <link type="text/css" href="{% static 'women/css/styles.css' %}?v=1.0" rel="stylesheet" cache-control="no-cache">
+    <!-- <link type="text/css" href="{% static 'women/css/styles.css' %}?v=1.0" rel="stylesheet" cache-control="no-cache"> -->
 
 
 </head>
@@ -25,10 +26,12 @@
   
     </ul>
 
+    {% block breadcrumbs %}
+
+    {% endblock %}
+
 
     {% block content %}
-
-
 
     {% endblock %}
 
@@ -37,10 +40,6 @@
 
 </body>
 </html>
-
-
-
-
 
 
 

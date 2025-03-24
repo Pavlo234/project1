@@ -1,11 +1,12 @@
 
 {% for cat in cats %}
   {% if cat.id == cat_selected %}
-    <li class="selected">{{ cat.name }}</li>
+  <li >{{ cat.name }}</li>
 
-  {% else %}
+
+    {% else %}
     <li class="i">
-      <a href="{{ cat.get_absolute_url }}" class="mr">{{ cat.name }}</a>
+      <a href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
     </li>
   {% endif %}
 {% endfor %}

@@ -1,0 +1,11 @@
+{% if tags %}
+
+        <a href="{% url 'home' %}" class="mr">Все категории</a>
+
+        {% for t in tags %}
+    
+        <li class="i"><a href="{{ t.get_absolute_url }}">{{ t.tag }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endif %}
