@@ -14,7 +14,6 @@
 {% endfor %}
 </ul>
 {% endif %}
-
 {% endwith %}
 {% endblock %}
 
@@ -24,7 +23,8 @@
 {% block content %}
 <h1>{{ post.title }}</h1>
 {% if post.photo %}
-<p><img class="img-article-left" src="{{ post.photo.url }}" alt=""></p>
+<p><img class="img-article-left" src="{{ post.photo.url }}" style="max-width: 400px; max-height: 400px; object-fit: contain;" ></p>
+
 {% endif %}
 
 {{ post.content|linebreaks }}

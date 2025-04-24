@@ -10,7 +10,6 @@
     <title>{{ title }}</title>
     <link type="text/css" href="{% static 'women/css/styles.css' %}?v={{ now|date:'YmdHis' }}" rel="stylesheet">
 
-    <!-- <link type="text/css" href="{% static 'women/css/styles.css' %}?v=1.0" rel="stylesheet" cache-control="no-cache"> -->
 
 
 </head>
@@ -22,7 +21,7 @@
             <a href="{% url m.url_name %}">{{ m.title }}</a>
         </li>
         {% endfor %}
-
+        <li><a href="https://www.youtube.com">Магия YouTube</a></li>
   
     </ul>
 
@@ -31,8 +30,12 @@
     {% endblock %}
 
 
+
+
+
     {% block content %}
 
+ 
     {% endblock %}
 
 

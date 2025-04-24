@@ -8,12 +8,16 @@
 <ul class="custom-list"> <!-- Добавляем класс 'custom-list' -->
     {% for po in posts %} 
         <li>
+            {% if po.photo %}
+            <p><img class="img-article-left thumb thumbnail" src="{{ po.photo.url }}" style="max-width: 100px; max-height: 100px; object-fit: contain;" ></p>
+            {% endif %}
+            
         <h2>{{ po.title }}</h2>
         {% autoescape off %}
         {{ po.content|linebreaks|truncatewords:40 }}
         {% endautoescape %}
         <p><a href="{{ po.get_absolute_url }}">Читать пост</a></p>
-    </li>
+        </li>
     {% endfor %}
 </ul>
 

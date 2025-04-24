@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.template.loader import render_to_string
 from women.models import Women
-from .models import Women, Category, TagPost
-
+from .models import Women, Category, TagPost, UploudFiles
+from .forms import AddPostForm, UploadFileForm
 
 menu = [
     {'title': 'О сайте', 'url_name' :'about'},
@@ -11,12 +11,6 @@ menu = [
     {'title': 'Обратная связь', 'url_name' :'contact'},
     {'title': 'Войти', 'url_name' :'login',
 }]
-
-data_db = [
-    {'id' : 1, 'title' : 'Анджелина Джоли', 'content' : '''Анджелина Джоли — американская актриса''' , 'is_published' : True,},
-    {'id' : 2, 'title' : 'biry', 'content' : 'История мороженого' ,'is_published' : True,},
-    {'id' : 3, 'title' : 'roma', 'content' : 'майнкрафт' ,'is_published' : True,},
-]
 
 
 def index(request):
@@ -29,11 +23,39 @@ def index(request):
         }
     return render(request, 'women/index.html', context=data)
 
+# def handle_uploaded_file(f):
+#     with open(f"uploads/{f.name}", "wb+") as destination:
+#         for chunk in f.chunks():
+#             destination.write(chunk)
+
+
 def about(request):
-    return render(request, 'women/about.html', {'title' : 'главная о нас', 'menu': menu})
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            fp = UploudFiles(file=form.cleaned_data['file'])
+            fp.save()
+
+    else:
+        form = UploadFileForm()
+    return render(request, 'women/about.html', {'title' : 'главная о нас', 'menu': menu, 'form' : form})
+
+
 
 def addpage(request):
-    return HttpResponse('Добавление статьи')
+    if request.method == 'POST':
+        form = AddPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = AddPostForm()
+    data = {
+        'title' : 'Добавление статьи',
+          'menu': menu,
+          'form' : form,
+    }
+    return render(request, 'women/addpage.html',data )
 
 def contact(request):
     return HttpResponse('Обратная связь')
@@ -51,13 +73,6 @@ def show_category(request, cat_slug):
         'cat_selected' : category.pk,
         }
     return render(request, 'women/index.html', context=data)
-
-
-
-
-
-
-
 
 
 def show_post(request, post_slug):

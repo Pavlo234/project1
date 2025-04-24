@@ -163,3 +163,10 @@ ul.custom-list li:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
+.thumbnail {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+    display: block;
+}
